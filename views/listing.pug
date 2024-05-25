@@ -1,0 +1,44 @@
+//- extends layout
+
+//- block content
+//-   table
+//-     tr
+//-       th Medicine
+//-       th Category
+//-     each medicine in medicines
+//-       tr
+//-         td= medicine.title
+//-         td= medicine.category
+//-         td
+//-           a.btn.btn-default(href='/medicine/edit/'+medicine._id) Edit
+//-         td
+//-           a.btn.btn-danger.delete-medicine(href='#', dataid=medicine._id) Delete
+//-   include paginate
+//- extends layout
+
+extends layout
+block content
+  div.px-5
+    form(action="/" method="GET")
+      .row
+        .col-md-8
+          input.form-control(type="text" name="search" id="search" placeholder="Search Medicine")
+        .col-md-4
+          button.btn.btn-primary.btn-block(type="submit") Search
+    table.table
+      thead
+        tr
+          th Medicine
+          th Category
+          th Actions
+      tbody
+        each medicine in medicines
+          tr
+            td= medicine.title
+            td= medicine.category
+            td
+              a.btn.btn-info(href='/medicine/edit/'+medicine._id) Edit
+              | &nbsp
+              a.btn.btn-danger.delete-medicine(href='#', dataid=medicine._id) Delete
+
+  include paginate

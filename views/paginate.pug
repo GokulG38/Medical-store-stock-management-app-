@@ -1,0 +1,12 @@
+nav(aria-label='Page navigation example')#pagination
+    ul.pagination
+      if pageCount > 1
+        if paginate.hasPreviousPages
+          li.page-item
+            a.page-link(href=paginate.href(true)).previous Previous
+        each page in pages
+          li.page-item
+            a.page-link(href=page.url)= page.number
+        if paginate.hasNextPages(pageCount)
+          li.page-item.next
+            a.page-link(href=paginate.href()).next Next

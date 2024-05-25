@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 #{title}
+    form(method='POST', action='/medicine/edit/'+medicine._id)
+        #form-group
+            label Medicine
+            input.form-control(name='title', type='text', value=medicine.title)
+        #form-group
+            label Category
+            input.form-control(name='category', type='text', value=medicine.category)
+        input.btn.btn-primary(type='submit', value='submit')
